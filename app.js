@@ -13,7 +13,6 @@ app.set('view engine','ejs');
 app.use(express.static("public"));
 
 const url = "mongodb+srv://Keag44:"+process.env.USER_CLUSTER_PWD+"@cluster0.pkgmdzq.mongodb.net/todolistDB";
-console.log(url);
 mongoose.connect(url);
 
 const itemsSchema = mongoose.Schema({

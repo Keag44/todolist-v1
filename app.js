@@ -35,7 +35,7 @@ app.get('/', async (req, res) => {
     try {
         let items = await Item.find(); 
         if(items.length===0){
-            console.log("No items in Today");
+            // console.log("No items in Today");
             items = defaultItems;
             await Item.insertMany(items);
         }
@@ -91,7 +91,7 @@ app.post("/check",async(req,res)=>{
 })
 
 app.get("/lists/:listname",async(req,res)=>{
-    console.log(req.params.listname);
+    // console.log(req.params.listname);
     try{
         const listname = _.capitalize(req.params.listname);
         if(listname!=req.params.listname){
@@ -103,7 +103,7 @@ app.get("/lists/:listname",async(req,res)=>{
                 res.render('list',{title:list.name,items:list.items});
             }
             else {
-                console.log("not found");
+                // console.log("not found");
                 const newList = new List({
                     name:listname,
                     items:defaultItems

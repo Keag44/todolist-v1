@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 const dotenv = require("dotenv");
+dotenv.config();
 
 const day = require(__dirname+"/day");
 
@@ -11,7 +12,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine','ejs');
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://Keag44:"+process.env.USER_PWD+"@cluster0.pkgmdzq.mongodb.net/todolistDB");
+const url = "mongodb+srv://Keag44:"+process.env.USER_CLUSTER_PWD+"@cluster0.pkgmdzq.mongodb.net/todolistDB";
+console.log(url);
+mongoose.connect(url);
 
 const itemsSchema = mongoose.Schema({
     name: String
